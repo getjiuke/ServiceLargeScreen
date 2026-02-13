@@ -18,7 +18,8 @@ const loadSDK = () => {
   return new Promise((resolve, reject) => {
     if (window.AMap) return resolve();
     
-    const key = '9418de4073daa108bf4f2bb586a9d2fb';
+    // 注意：请在此处替换为您自己的高德地图API密钥
+    const key = 'YOUR_AMAP_API_KEY';
     const script = document.createElement('script');
     script.src = `https://webapi.amap.com/maps?v=2.0&key=${key}&plugin=${plugins.value.join(',')}`;
     script.onload = () => resolve();

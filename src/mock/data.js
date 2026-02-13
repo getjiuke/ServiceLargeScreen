@@ -280,7 +280,7 @@ export const mockCaseStatsWithFullDateRange = generateMockCaseStatsWithFullDateR
 export const mockMapData = {
     caseInfos: (() => {
         const points = [];
-        // 天津市中心区域坐标范围
+        // 市中心区域坐标范围
         const baseLng = 117.195968;
         const baseLat = 39.125582;
         

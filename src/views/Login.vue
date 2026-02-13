@@ -3,7 +3,7 @@
 		<transition appear enter-active-class="animate__animated animate__slideInDown animate__slow">
 			<div class="Login-container" v-if="show">
 				<div class="Title-Text-Content">
-					<span class="header-title-font title">天津市巡查管理平台</span>
+					<span class="header-title-font title">巡查管理平台</span>
 				</div>
 				<div class="Login-Panel-Content" v-if="LoginPanelSHow">
 					<transition appear enter-active-class="animate__animated animate__zoomIn animate__slow">
