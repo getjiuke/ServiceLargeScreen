@@ -59,10 +59,10 @@ const updateChart = () => {
       top: '10%',
     },
     grid: {
-      left: '5%',
-      right: '5%',
-      bottom: '10%',
-      top: '20%',
+      left: '4%',
+      right: '4%',
+      bottom: '6%',
+      top: '22%',
       containLabel: true,
     },
     xAxis: {
@@ -71,8 +71,11 @@ const updateChart = () => {
       axisLabel: {
         color: '#fff',
         interval: 0,
-        rotate: 0, // 标签旋转30度，防止重叠
-        margin: 20
+        rotate: 40,
+        fontSize: 11,
+        margin: 12,
+        overflow: 'truncate',
+        width: 56
       },
       axisLine: {
         lineStyle: {
@@ -196,7 +199,6 @@ onMounted(() => {
 }
 
 .chart {
-  margin-top: 2%;
   width: 100%;
   height: 100%;
 }

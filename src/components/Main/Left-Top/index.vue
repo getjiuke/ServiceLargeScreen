@@ -36,11 +36,11 @@ const loading = ref(false);
 const data = reactive({
   row1: [
     { value: '0', label: '覆盖面积（km²）', color: 'blue' },
-    { value: '0', label: '单元网格', color: 'blue' },
+    { value: '0', label: '单元网格', color: 'teal' },
   ],
   row2: [
     { value: '0', label: '案件数', color: 'orange' },
-    { value: '0', label: '巡查人员', color: 'orange' },
+    { value: '0', label: '巡查人员', color: 'yellow' },
   ],
 });
 
@@ -151,8 +151,16 @@ onMounted(() => {
   color: #2cd6df;
 }
 
+.teal {
+  color: #4fc3f7;
+}
+
 .orange {
   color: #ffa500;
+}
+
+.yellow {
+  color: #f7d12a;
 }
 
 .small-text {

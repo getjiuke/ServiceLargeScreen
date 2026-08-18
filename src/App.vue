@@ -27,6 +27,7 @@ html,body{
 	margin: 0;
 	padding: 0;
 	overflow: hidden !important;
+	background: #0a1628;
 } 
 </style>
 

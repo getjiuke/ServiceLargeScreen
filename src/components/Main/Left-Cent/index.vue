@@ -244,13 +244,6 @@ watch(selectDate, (newVal) => {
 // 组件挂载时获取数据
 onMounted(() => {
   getData();
-
-  // 动态调整滚动区域高度
-  const containerEl = document.querySelector('.left-cent');
-  if (containerEl) {
-    const containerHeight = containerEl.clientHeight;
-    dropdown.value.style.maxHeight = `${containerHeight - 60}px`;
-  }
 });
 </script>
 
@@ -260,6 +253,8 @@ onMounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
+  flex: 1;
+  min-height: 0;
   background: transparent;
 }
 
@@ -268,13 +263,14 @@ onMounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  max-height: 310px;
+  height: 100%;
+  max-height: none;
   overflow-y: auto;
   padding: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 12px;
   background: rgba(0, 0, 0, 0);
   scrollbar-width: thin;
-  scrollbar-color: #02d5df transparent;
+  scrollbar-color: rgba(2, 213, 223, 0.55) transparent;
 }
 
 /* 自定义滚动条样式 */

@@ -122,7 +122,9 @@ onBeforeUnmount(() => {
 <style lang="less" scoped>
 .scroll-container {
   width: 100%;
-  height: 270px;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
   overflow-y: auto;
   position: relative;
 

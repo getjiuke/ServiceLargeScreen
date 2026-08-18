@@ -13,15 +13,15 @@
 							</div>
 							<div class="Login-Panel-Main">
 								<div class="PhoneNum-Input">
-									<el-input v-model="username" placeholder="请输入账号"></el-input>
+									<el-input v-model="username" placeholder="请输入账号" autocomplete="off"></el-input>
 								</div>
 								<div class="Password-Input">
 									<el-input v-model="password" type="password" show-password
-										placeholder="请输入密码"></el-input>
+										placeholder="请输入密码" autocomplete="off"></el-input>
 								</div>
 								<div class="Verification-Code-Input">
 									<div class="input-with-button">
-										<el-input v-model="code" placeholder="请输入验证码" maxlength="4"></el-input>
+										<el-input v-model="code" placeholder="请输入验证码" maxlength="4" autocomplete="off"></el-input>
 										<div class="code-display" @click="setCaptchaCode">
 											{{ displayedCode }}
 										</div>
@@ -149,11 +149,13 @@ onMounted(() => {
 		text-align: center;
 
 		span {
-			margin-top: 10px;
-			margin-right: 10px;
+			display: inline-block;
+			margin-top: 18px;
 			font-size: 46px;
 			font-style: italic;
 			color: #fff;
+			letter-spacing: 10px;
+			text-shadow: 0 0 18px rgba(44, 214, 223, 0.7);
 		}
 	}
 
@@ -180,10 +182,11 @@ onMounted(() => {
 					top: 63%;
 					left: 50%;
 					transform: translate(-50%, -50%);
-					color: #fff;
+					color: #f0d78c;
 					font-size: 25px;
-					letter-spacing: 3px;
+					letter-spacing: 6px;
 					font-family: "font-header-title";
+					text-shadow: 0 0 8px rgba(240, 215, 140, 0.45);
 				}
 			}
 
@@ -195,51 +198,81 @@ onMounted(() => {
 				justify-content: space-around;
 				align-items: center;
 
-				.PhoneNum-Input {
+				.PhoneNum-Input,
+				.Password-Input,
+				.Verification-Code-Input {
+					display: flex;
+					align-items: center;
 					height: 18%;
 					width: 60%;
-					background-image: url("/img/login/PhoneNum-Input.png");
 					background-size: 100% 100%;
+					background-repeat: no-repeat;
+				}
 
-					.el-input {
-						height: 40px;
-						width: 80%;
-						margin-left: 55px;
-					}
+				.PhoneNum-Input {
+					background-image: url("/img/login/PhoneNum-Input.png");
 				}
 
 				.Password-Input {
-					height: 18%;
-					width: 60%;
 					background-image: url("/img/login/Password-Input.png");
-					background-size: 100% 100%;
-
-					.el-input {
-						height: 40px;
-						width: 80%;
-						margin-left: 55px;
-					}
 				}
 
 				.Verification-Code-Input {
-					display: flex;
-					height: 18%;
-					width: 60%;
 					background-image: url("/img/login/Verification-Code-Input.png");
-					background-size: 100% 100%;
+				}
 
-					.el-input {
-						height: 40px;
-						width: 50%;
-						margin-left: 55px;
-					}
+				:deep(.el-input) {
+					height: 70%;
+					width: calc(100% - 72px);
+					margin-left: 58px;
+					--el-input-bg-color: transparent;
+					--el-input-border-color: transparent;
+					--el-input-hover-border-color: transparent;
+					--el-input-focus-border-color: transparent;
+					--el-input-text-color: #fff;
+					--el-fill-color-blank: transparent;
+				}
 
-					.code-img {
-						margin-top: 3px;
-						height: 40px;
-						width: 34%;
-						border-radius: 3px;
-					}
+				:deep(.el-input__wrapper) {
+					background: transparent !important;
+					box-shadow: none !important;
+					padding: 0 8px;
+					height: 100%;
+				}
+
+				:deep(.el-input__inner) {
+					height: 100%;
+					line-height: 1;
+					margin-top: 0 !important;
+					font-size: 16px !important;
+					letter-spacing: 2px !important;
+					font-family: "font-header-title", sans-serif !important;
+					-webkit-text-fill-color: #fff !important;
+					color: #fff !important;
+					background-color: transparent !important;
+				}
+
+				:deep(.el-input__inner::placeholder) {
+					color: rgba(255, 255, 255, 0.55) !important;
+					-webkit-text-fill-color: rgba(255, 255, 255, 0.55) !important;
+				}
+
+				:deep(.el-input__suffix),
+				:deep(.el-input__prefix) {
+					display: flex;
+					align-items: center;
+				}
+
+				:deep(.el-input__password) {
+					color: #9ad7ea;
+				}
+
+				:deep(input:-webkit-autofill),
+				:deep(input:-webkit-autofill:hover),
+				:deep(input:-webkit-autofill:focus) {
+					-webkit-text-fill-color: #fff !important;
+					caret-color: #fff;
+					transition: background-color 9999s ease-out 0s;
 				}
 			}
 
@@ -263,14 +296,13 @@ onMounted(() => {
 				}
 
 				.button>span {
-					margin-bottom: 3px;
-					;
 					display: block;
 					color: white;
 					transform: skewX(25deg);
 					font-family: "font-header-title";
 					letter-spacing: 5px;
 					font-size: 20px;
+					line-height: 1;
 				}
 
 				.button:hover {
@@ -279,79 +311,43 @@ onMounted(() => {
 			}
 		}
 	}
-
-}
-
-:deep(.el-input__wrapper) {
-	background-color: rgba(0, 0, 0, 0.2) !important;
-	box-shadow: 0 0 0 1px rgba(2, 213, 223, 0.3) inset !important;
-	padding: 1px 8px;
-	border-radius: 4px;
-	transition: all 0.3s;
-}
-
-:deep(.el-input__wrapper):hover {
-	box-shadow: 0 0 0 1px rgba(2, 213, 223, 0.6) inset !important;
-	background-color: rgba(0, 0, 0, 0.3) !important;
-}
-
-:deep(.el-input__wrapper.is-focus) {
-	box-shadow: 0 0 0 2px rgba(2, 213, 223, 0.8) inset !important;
-	background-color: rgba(0, 0, 0, 0.4) !important;
-}
-
-:deep(.el-input__inner) {
-	margin-top: 3px !important;
-	font-size: 18px !important;
-	letter-spacing: 3px !important;
-	font-family: "font-header-title" !important;
-	-webkit-text-fill-color: #fff !important;
-	color: #fff !important;
-	background-color: transparent !important;
 }
 
 .input-with-button {
 	display: flex;
+	align-items: center;
 	width: 100%;
-	justify-content: space-between;
-	gap: 10px;
-	margin-bottom: 5px;
+	height: 100%;
+
+	:deep(.el-input) {
+		flex: 1;
+		width: auto !important;
+		height: 70%;
+		margin-left: 58px;
+		margin-right: 6px;
+	}
 }
 
 .code-display {
-	width: 40%;
-	height: 40px;
-	background: rgba(2, 213, 223, 0.2);
-	border: 1px solid #02d5df;
-	border-radius: 4px;
+	flex-shrink: 0;
+	width: 88px;
+	height: 70%;
+	margin-right: 10px;
+	background: rgba(2, 213, 223, 0.18);
+	border: 1px solid rgba(2, 213, 223, 0.7);
+	border-radius: 3px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #fff;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: bold;
-	letter-spacing: 5px;
+	letter-spacing: 4px;
 	font-family: "font-header-title";
 	cursor: pointer;
-	transition: all 0.3s;
-}
-
-.code-display:hover {
-	background: rgba(2, 213, 223, 0.3);
-	transform: scale(1.02);
 }
 
 .refresh-code {
-	color: #02d5df;
-	font-size: 12px;
-	text-align: center;
-	cursor: pointer;
-	margin-top: 5px;
-	transition: all 0.3s;
-}
-
-.refresh-code:hover {
-	color: #fff;
-	text-decoration: underline;
+	display: none;
 }
 </style>

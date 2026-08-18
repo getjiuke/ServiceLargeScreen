@@ -45,7 +45,7 @@
     <!-- 功能图标 -->
     <div class="menu-icon" @click="toggleMenu">←</div>
     <div class="date-range-container">
-      <DateRangePicker @date-change="handleDateChange" />
+      <DateRangePicker />
     </div>
     <div class="date-icon">{{ currentDate }}</div>
   </div>
@@ -164,32 +164,42 @@ onBeforeUnmount(() => {
   position: relative;
   width: 1920px;
   height: 1080px;
-  overflow: hidden; /* 防止内容溢出 */
+  overflow: hidden;
+  background: #0a1628;
 
   // 通用组件样式
   [class^="left-"], [class^="right-"] {
     position: absolute;
-    background: rgba(21, 79, 116, 0.1);
+    background: rgba(10, 32, 54, 0.72);
     border: 1px solid rgba(2, 213, 223, 0.8);
     border-radius: 8px;
-    padding: 0px;	// 子组件的内容距离
+    padding: 0px;
     color: #fff;
     backdrop-filter: blur(5px);
-	overflow: hidden; /* 防止内容溢出 */
+    overflow: hidden;
+    z-index: 2;
   }
 
   .header-title {
     position: absolute;
     top: 10px;
     left: 50%;
-	  text-align: center;
+    text-align: center;
     transform: translateX(-50%);
     color: #2aa9d6;
     font-size: 20px;
     text-shadow: 0 0 10px rgba(44, 214, 223, 0.5);
     z-index: 2;
-	  width: 580px;
-	  height: 80px;
+    width: 580px;
+    height: 80px;
+    pointer-events: none;
+
+    h1 {
+      margin: 0;
+      line-height: 70px;
+      font-size: 36px;
+      letter-spacing: 4px;
+    }
   }
   
   .header-table {
@@ -203,6 +213,7 @@ onBeforeUnmount(() => {
   
   .component-title {
     width: 100%;
+    flex-shrink: 0;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -222,10 +233,10 @@ onBeforeUnmount(() => {
 
   // 左侧定位
   .left-top {
-    top: 80px;
+    top: 90px;
     left: 20px;
     width: 480px;
-    height: 310px;
+    height: 300px;
   }
 
   .left-cent {
@@ -233,7 +244,9 @@ onBeforeUnmount(() => {
     left: 20px;
     width: 480px;
     height: 310px;
-	padding-top: 0;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .left-lower {
@@ -241,15 +254,17 @@ onBeforeUnmount(() => {
     left: 20px;
     width: 480px;
     height: 310px;
-	padding-top: 0;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   // 右侧定位
   .right-top {
-    top: 80px;
+    top: 90px;
     right: 20px;
     width: 480px;
-    height: 310px;
+    height: 300px;
   }
 
   .right-cent {
@@ -266,33 +281,36 @@ onBeforeUnmount(() => {
     height: 310px;
   }
 
-  // 功能图标
+  // 顶部工具：限制在标题栏高度内，避免压住右侧图表
   .menu-icon, .date-icon, .date-range-container {
     position: absolute;
-    top: 30px;
+    top: 18px;
+    height: 40px;
     color: #2cd6df;
-    font-size: 24px;
-    cursor: pointer;
     z-index: 3;
+    box-sizing: border-box;
   }
 
   .menu-icon {
-    left: 30px;
-    padding: 10px;
+    left: 24px;
+    padding: 0 10px;
+    font-size: 24px;
+    line-height: 40px;
+    cursor: pointer;
   }
 
   .date-icon {
-    right: 30px;
-    padding: 10px;
+    right: 24px;
+    padding: 0 12px;
+    font-size: 16px;
+    line-height: 40px;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 4px;
   }
   
   .date-range-container {
-	top:35px;
-    right: 200px; /* 向右移动60px */
+    right: 170px;
     padding: 0;
-    height: 40px;
     display: flex;
     align-items: center;
   }
